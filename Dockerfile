@@ -62,6 +62,9 @@ RUN apt-get install -y r-base-core=3.4.1-1trusty0 r-base-dev=3.4.1-1trusty0
 # set UTF-8
 RUN echo "LANG=C.UTF-8" >> /usr/lib/R/etc/Renviron.site
 
+# install some R packages
+RUN Rscript -e "install.packages(\"rsconnect\", repo = \"https://cloud.r-project.org\")"
+
 LABEL "com.github.actions.name"="shinyapps.io"
 LABEL "com.github.actions.description"="Talk to shinyapps.io via rsconnect"
 LABEL "com.github.actions.icon"="upload-cloud"
